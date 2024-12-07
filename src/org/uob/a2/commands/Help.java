@@ -12,6 +12,19 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Help extends Command {
+    public Help(String topic) {
+        this.value = topic;
+        this.commandType = CommandType.HELP;
+    }
 
-  
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
 }

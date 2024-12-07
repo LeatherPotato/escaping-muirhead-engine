@@ -1,5 +1,7 @@
 package org.uob.a2.commands;
 
+import java.util.Arrays;
+
 /**
  * Represents the various types of commands that can be executed in the game.
  * 
@@ -46,5 +48,6 @@ public enum CommandType {
     /**
      * Represents a command to quit the game.
      */
-    QUIT,
+    QUIT;
+
 }

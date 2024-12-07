@@ -11,6 +11,20 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Look extends Command {
+    public Look(String target) {
+        this.value = target;
+        this.commandType = CommandType.LOOK;
+    }
 
-   
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
+
 }

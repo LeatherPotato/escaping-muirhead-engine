@@ -11,6 +11,23 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Use extends Command {
+    private String equimpemtName;
+
+    public Use(String equipmentName, String target) {
+        this.value = target;
+        this.equimpemtName = equipmentName;
+        this.commandType = CommandType.USE;
+    }
+
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 
   
 }

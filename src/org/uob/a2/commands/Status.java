@@ -12,6 +12,18 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Status extends Command {
+    public Status(String topic) {
+        this.value = topic;
+        this.commandType = CommandType.STATUS;
+    }
 
-  
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

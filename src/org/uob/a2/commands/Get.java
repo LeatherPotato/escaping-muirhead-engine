@@ -13,5 +13,19 @@ import org.uob.a2.gameobjects.*;
  */
 public class Get extends Command {
 
-   
+    public Get(String item) {
+        this.commandType = CommandType.GET;
+        this.value = item;
+    }
+
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
 }

@@ -11,6 +11,17 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Quit extends Command {
+    public Quit() {
+        this.commandType = CommandType.QUIT;
+    }
 
- 
+    @Override
+    public String execute(GameState gameState) {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }
