@@ -15,6 +15,13 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class GameStateFileParser {
+    public GameStateFileParser() {
 
+    }
+
+    public static GameState parse(String filename) {
+        GameState gameState = new GameState();
+        return gameState;
+    }
    
 }
