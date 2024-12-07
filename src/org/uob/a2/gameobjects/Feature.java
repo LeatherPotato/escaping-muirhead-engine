@@ -20,4 +20,9 @@ public class Feature extends GameObject {
     public String toString() {
         return super.toString();
     }
+
+    // constructor
+    public Feature(String id, String name, String description, boolean hidden) {
+        super(id, name, description, hidden);
+    }
 }

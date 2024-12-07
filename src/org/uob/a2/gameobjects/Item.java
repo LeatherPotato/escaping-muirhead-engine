@@ -9,6 +9,11 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class Item extends GameObject {
+    // constructor
+    public Item(String id, String name, String description, boolean Hidden) {
+        super(id, name, description, Hidden);
+    }
+
 
      /**
      * Returns a string representation of the item by calling the superclass's {@code toString} method.

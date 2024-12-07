@@ -1,5 +1,6 @@
 package org.uob.a2.gameobjects;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
@@ -15,7 +16,23 @@ import org.uob.a2.utils.*;
  * </p>
  */
 public class Map {
-  
+    private ArrayList<Room> rooms;
+    private Room currentRoom;
+
+    public Map() {}
+
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(String roomId) {
+        currentRoom = rooms.stream().filter(x -> x.getId().equals(roomId)).findFirst().orElse(null);
+    }
+
     /**
      * Returns a string representation of the map, including all rooms.
      *
