@@ -35,7 +35,7 @@ public class Room extends GameObject {
     }
 
     // adds exit
-    public void adExit(Exit exit) {
+    public void addExit(Exit exit) {
         this.exits.add(exit);
     }
 

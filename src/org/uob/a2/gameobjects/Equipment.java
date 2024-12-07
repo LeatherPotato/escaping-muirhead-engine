@@ -27,7 +27,7 @@ public class Equipment extends GameObject implements Usable {
 
     @Override
     public UseInformation getUseInformation() {
-        return null;
+        return useInformation;
     }
 
     @Override

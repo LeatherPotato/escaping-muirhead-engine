@@ -16,9 +16,8 @@ import org.uob.a2.commands.*;
 public class Parser {
     public Parser() {}
 
-    public Command parse(ArrayList<Token> tokens) {
+    public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
         Command command = null;
-
         return command;
     }
  

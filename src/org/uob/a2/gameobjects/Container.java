@@ -17,7 +17,7 @@ public class Container extends Feature {
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return this.name;
     }
 

@@ -10,11 +10,11 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class UseInformation {
-    boolean isUsed;
-    String action;
-    String target;
-    String result;
-    String message;
+    private boolean isUsed;
+    private String action;
+    private String target;
+    private String result;
+    private String message;
 
     public UseInformation(boolean isUsed, String action, String target, String result, String message) {
         this.isUsed = isUsed;
@@ -24,44 +24,44 @@ public class UseInformation {
         this.message = message;
     }
 
-    String getAction() {
+    public String getAction() {
         return action;
     }
 
-    String getTarget() {
+    public String getTarget() {
         return target;
 
     }
 
-    String getResult() {
+    public String getResult() {
         return result;
     }
 
-    String getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    boolean isUsed() {
+    public boolean isUsed() {
         return isUsed;
     }
 
-    void setAction(String action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
-    void setTarget(String target) {
+    public void setTarget(String target) {
         this.target = target;
     }
 
-    void setResult(String result) {
+    public void setResult(String result) {
         this.result = result;
     }
 
-    void setMessage(String message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    void setUsed(boolean used) {
+    public void setUsed(boolean used) {
         isUsed = used;
     }
 
