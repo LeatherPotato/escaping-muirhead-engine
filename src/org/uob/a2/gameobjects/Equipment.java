@@ -17,7 +17,25 @@ public class Equipment extends GameObject implements Usable {
 
     // uses the equipment object and updates gameState
     public String use(GameObject target, GameState gameState) {
-        return "";
+        useInformation.setUsed(true);
+        target.setHidden(true);
+        GameObject obj = gameState.getMap().getCurrentRoom().getItem(useInformation.getResult());
+        if (obj == null) {
+            obj = gameState.getMap().getCurrentRoom().getEquipment(useInformation.getResult());
+            if (obj == null) {
+                obj = gameState.getMap().getCurrentRoom().getFeature(useInformation.getResult());
+                if (obj != null) {
+                    obj.setHidden(false);
+                }
+            }
+            else {
+                obj.setHidden(false);
+            }
+        }
+        else {
+            obj.setHidden(false);
+        }
+        return useInformation.getMessage();
     }
 
     @Override

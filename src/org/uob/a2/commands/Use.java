@@ -34,8 +34,21 @@ public class Use extends Command {
                     return "You have already used " + equipmentName;
                 }
                 else {
-                    gameState.getPlayer().getEquipment(equipmentName).getUseInformation().setUsed(true);
-                    return gameState.getPlayer().getEquipment(equipmentName).getUseInformation().getMessage();
+                    boolean isItem = gameState.getMap().getCurrentRoom().hasItem(value) || gameState.getMap().getCurrentRoom().getItem(value) != null;
+                    GameObject obj;
+                    if (isItem) {
+                        obj = gameState.getMap().getCurrentRoom().getItemByName(value);
+                        if (obj == null) {
+                            obj = gameState.getMap().getCurrentRoom().getItem(value);
+                        }
+                    }
+                    else {
+                        obj = gameState.getMap().getCurrentRoom().getFeatureByName(value);
+                        if (obj == null) {
+                            obj = gameState.getMap().getCurrentRoom().getFeature(value);
+                        }
+                    }
+                    return gameState.getPlayer().getEquipment(equipmentName).use(obj, gameState);
                 }
             }
             else {
