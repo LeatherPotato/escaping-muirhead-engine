@@ -18,7 +18,23 @@ public class Drop extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        return "";
+        if(gameState.getPlayer().hasItem(value)) {
+            Item item = gameState.getPlayer().getItem(value);
+            gameState.getPlayer().removeItem(item);
+            gameState.getMap().getCurrentRoom().addItem(item);
+            return "You drop: " + item.getName();
+        }
+
+        else if(gameState.getPlayer().hasEquipment(value)) {
+            Equipment equipment = gameState.getPlayer().getEquipment(value);
+            gameState.getPlayer().removeEquipment(equipment);
+            gameState.getMap().getCurrentRoom().addEquipment(equipment);
+            return "You drop: " + equipment.getName();
+        }
+
+        else {
+            return "You cannot drop " + value;
+        }
     }
 
     @Override
