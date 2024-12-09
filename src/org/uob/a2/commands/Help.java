@@ -19,34 +19,30 @@ public class Help extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        switch (this.value) {
-            case "move":
-                return "MOVE";
+        final String help = """
+            Welcome to the game! Here are the available commands.
+            - MOVE: Move to a different location(e.g., 'move north').
+            - USE: Use an item in your inventory (e.g., ’use key’ or ’use key on chest').
+            - GET: Pick up an item from the current room (e.g., ’get key’).
+            - DROP: Drop an item from your inventory (e.g., ’drop key’).
+            - LOOK: Look around the current room or inspect an object.
+            - STATUS: Check your current status, including inventory.(e.g. ’status player’ or ’status inventory’).
+            - HELP: Display this help information or get help on a specific topic
+                (e.g., ’help move’).
+            - QUIT: Exit the game.
+            Explore the different rooms and solve the puzzles to escape muirhead!
+            """;
 
-            case "use":
-                return "USE";
-
-            case "get":
-                return "GET";
-
-            case "drop":
-                return "DROP";
-
-            case "look":
-                return "LOOK";
-
-            case "status":
-                return "STATUS";
-
-            case "help":
-                return "HELP";
-
-            case "quit":
-                return "QUIT";
-
-            default:
-                // TODO: add checks for objects here from gameState
-                return "invalid command";
+        if (value == null) {
+            return help;
+        }
+        else {
+            try {
+                return CommandType.valueOf(value.toUpperCase()).helpMessage;
+            }
+            catch(Exception e) {
+                return "No help available for the topic: " + value;
+            }
         }
     }
 
