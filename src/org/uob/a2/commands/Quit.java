@@ -2,6 +2,8 @@ package org.uob.a2.commands;
 
 import org.uob.a2.gameobjects.*;
 
+import java.util.stream.Collectors;
+
 /**
  * Represents the quit command, allowing the player to exit the game.
  * 
@@ -17,7 +19,8 @@ public class Quit extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        return "";
+        Status status = new Status("player");
+        return "Game over: Your current status is:\n" + status.execute(gameState).toLowerCase();
     }
 
     @Override
