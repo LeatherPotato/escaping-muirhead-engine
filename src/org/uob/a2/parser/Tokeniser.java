@@ -23,7 +23,7 @@ public class Tokeniser {
     }
 
     public String sanitise(String s) {
-        StringBuilder sanitised = new StringBuilder(new String());
+        StringBuilder sanitised = new StringBuilder();
         char prevC = (char) 0;
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
@@ -31,7 +31,7 @@ public class Tokeniser {
                 // if char is not equal to whitespace then it adds the lowercase character
                 sanitised.append(Character.toLowerCase(c));
             }
-            else if (c != prevC) {
+            else if (c != prevC && i!=0) {
                 // if char is whitespace and is not equal to the previous, character, then it is added
                 // therefore only 1 whitespace character is added
                 sanitised.append(' ');

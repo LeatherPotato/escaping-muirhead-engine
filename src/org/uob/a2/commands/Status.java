@@ -24,6 +24,6 @@ public class Status extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "STATUS " + this.value;
     }
 }

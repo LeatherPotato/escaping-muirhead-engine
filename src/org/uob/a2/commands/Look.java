@@ -23,7 +23,7 @@ public class Look extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "LOOK " + this.value;
     }
 
 

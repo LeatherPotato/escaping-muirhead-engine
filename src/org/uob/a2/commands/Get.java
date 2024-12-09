@@ -25,7 +25,7 @@ public class Get extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "GET " + this.value;
     }
 
 }

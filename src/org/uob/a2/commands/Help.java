@@ -19,12 +19,40 @@ public class Help extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        return "";
+        switch (this.value) {
+            case "move":
+                return "MOVE";
+
+            case "use":
+                return "USE";
+
+            case "get":
+                return "GET";
+
+            case "drop":
+                return "DROP";
+
+            case "look":
+                return "LOOK";
+
+            case "status":
+                return "STATUS";
+
+            case "help":
+                return "HELP";
+
+            case "quit":
+                return "QUIT";
+
+            default:
+                // TODO: add checks for objects here from gameState
+                return "invalid command";
+        }
     }
 
     @Override
     public String toString() {
-        return "";
+        return "HELP " + this.value;
     }
 
 }

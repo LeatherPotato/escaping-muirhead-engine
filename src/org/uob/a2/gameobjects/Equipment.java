@@ -30,11 +30,6 @@ public class Equipment extends GameObject implements Usable {
         return useInformation;
     }
 
-    @Override
-    public String getName() {
-        return "";
-    }
-
     /**
      * Returns a string representation of this equipment, including the attributes inherited from {@code GameObject}
      * and the associated use information.

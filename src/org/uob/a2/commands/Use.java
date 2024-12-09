@@ -26,7 +26,7 @@ public class Use extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "USE itemname: " + this.equimpemtName + " target: " + this.value;
     }
 
   

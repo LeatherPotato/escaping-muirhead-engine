@@ -22,6 +22,6 @@ public class Quit extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "QUIT";
     }
 }

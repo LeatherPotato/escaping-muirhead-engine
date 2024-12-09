@@ -23,6 +23,6 @@ public class Drop extends Command {
 
     @Override
     public String toString() {
-       return "";
+        return "DROP " + this.value;
     }
 }

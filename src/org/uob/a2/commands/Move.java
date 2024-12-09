@@ -23,6 +23,6 @@ public class Move extends Command {
 
     @Override
     public String toString() {
-        return "";
+        return "MOVE " + this.value;
     }
 }

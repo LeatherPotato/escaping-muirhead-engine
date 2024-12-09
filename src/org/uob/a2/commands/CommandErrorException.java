@@ -8,10 +8,14 @@ package org.uob.a2.commands;
  * </p>
  */
 public class CommandErrorException extends Exception {
-    private String error;
+    private final String error;
 
     public CommandErrorException(String error) {
         this.error = error;
+    }
+
+    public String getMessage() {
+        return error;
     }
 
 
@@ -22,6 +26,6 @@ public class CommandErrorException extends Exception {
      */
     @Override
     public String toString() {
-        return "CommandError: " + getMessage();
+        return "CommandError: " + error;
     }
 }
