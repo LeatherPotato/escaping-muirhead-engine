@@ -31,8 +31,8 @@ public class Status extends Command {
         }
 
         else if (value.equals("player")) {
-            final String items = gameState.getPlayer().getInventory().stream().map(n -> "- " + n.getName()).collect(Collectors.joining("\n"));
-            final String equipment = gameState.getPlayer().getEquipment().stream().map(n -> "- " + n.getName()).collect(Collectors.joining("\n"));
+            final String items = gameState.getPlayer().getInventory().stream().map(n -> "- " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String equipment = gameState.getPlayer().getEquipment().stream().map(n -> "- " + n.getDescription()).collect(Collectors.joining("\n"));
             final String name = gameState.getPlayer().getName();
 
             return "Player Name: " + name + "\nInventory:\n" + items + "\nEquipment:\n" + equipment;
