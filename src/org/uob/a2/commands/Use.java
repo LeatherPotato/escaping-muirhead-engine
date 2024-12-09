@@ -11,22 +11,45 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public class Use extends Command {
-    private String equimpemtName;
+    private String equipmentName;
 
     public Use(String equipmentName, String target) {
         this.value = target;
-        this.equimpemtName = equipmentName;
+        this.equipmentName = equipmentName;
         this.commandType = CommandType.USE;
     }
 
     @Override
     public String execute(GameState gameState) {
-        return "";
+        // incorrect check for target existence
+        boolean targetExists = gameState.getMap().getCurrentRoom().hasItem(value) ||
+                gameState.getMap().getCurrentRoom().getItem(value) != null ||
+                gameState.getMap().getCurrentRoom().hasFeature(value) ||
+                gameState.getMap().getCurrentRoom().getFeature(value) != null;
+        if (targetExists) {
+            boolean has = gameState.getPlayer().hasEquipment(equipmentName);
+            if (has) {
+                boolean used = gameState.getPlayer().getEquipment(equipmentName).getUseInformation().isUsed();
+                if (used) {
+                    return "You have already used " + equipmentName;
+                }
+                else {
+                    gameState.getPlayer().getEquipment(equipmentName).getUseInformation().setUsed(true);
+                    return gameState.getPlayer().getEquipment(equipmentName).getUseInformation().getMessage();
+                }
+            }
+            else {
+                return "You do not have " + equipmentName;
+            }
+        }
+        else {
+            return "Invalid use target";
+        }
     }
 
     @Override
     public String toString() {
-        return "USE itemname: " + this.equimpemtName + " target: " + this.value;
+        return "USE itemname: " + this.equipmentName + " target: " + this.value;
     }
 
   

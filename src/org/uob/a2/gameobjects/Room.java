@@ -114,11 +114,15 @@ public class Room extends GameObject {
     }
 
     public boolean hasEquipment(String name) {
-        return equipment.stream().filter(x -> x.getName().equals(name)).findFirst().isPresent();
+        return equipment.stream().anyMatch(x -> x.getName().equals(name));
     }
 
     public boolean hasItem(String name) {
-        return items.stream().filter(x -> x.getName().equals(name)).findFirst().isPresent();
+        return items.stream().anyMatch(x -> x.getName().equals(name));
+    }
+
+    public boolean hasFeature(String name) {
+        return features.stream().anyMatch(x -> x.getName().equals(name));
     }
 
     public void setDescription(String description) {

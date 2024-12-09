@@ -16,11 +16,16 @@ public class Player {
     private String name;
 
     // defqault constructor
-    public Player() {}
+    public Player() {
+        equipment = new ArrayList<>();
+        inventory = new ArrayList<>();
+    }
 
     // constructor with player name
     public Player(String name) {
         this.name = name;
+        equipment = new ArrayList<>();
+        inventory = new ArrayList<>();
     }
 
     public void addEquipment(Equipment equipment) {
@@ -52,11 +57,19 @@ public class Player {
     }
 
     public boolean hasEquipment(String equipmentName) {
-        return equipment.stream().filter(x -> x.getName().equals(equipmentName)).findFirst().isPresent();
+        return equipment.stream().anyMatch(x -> x.getName().equals(equipmentName));
     }
 
     public boolean hasItem(String itemName) {
-        return inventory.stream().filter(x -> x.getName().equals(itemName)).findFirst().isPresent();
+        return inventory.stream().anyMatch(x -> x.getName().equals(itemName));
+    }
+
+    public void removeEquipment(Equipment equipment) {
+        this.equipment.remove(equipment);
+    }
+
+    public void removeItem(Item item) {
+        this.inventory.remove(item);
     }
 
 

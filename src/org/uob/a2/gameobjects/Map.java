@@ -19,7 +19,9 @@ public class Map {
     private ArrayList<Room> rooms;
     private Room currentRoom;
 
-    public Map() {}
+    public Map() {
+        rooms = new ArrayList<>();
+    }
 
     public void addRoom(Room room) {
         rooms.add(room);

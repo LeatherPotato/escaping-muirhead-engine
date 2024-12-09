@@ -9,8 +9,8 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class GameState {
-    Map map;
-    Player player;
+    private Map map;
+    private Player player;
 
     // default constructor
     public GameState() {
