@@ -31,7 +31,7 @@ public class Drop extends Command {
             gameState.getMap().getCurrentRoom().addEquipment(equipment);
             return "You drop: " + equipment.getName();
         }
-
+// test
         else {
             return "You cannot drop " + value;
         }
