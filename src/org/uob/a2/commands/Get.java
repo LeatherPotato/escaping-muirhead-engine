@@ -20,7 +20,31 @@ public class Get extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        return "";
+        boolean targetExists = gameState.getMap().getCurrentRoom().hasItem(value) ||
+                gameState.getMap().getCurrentRoom().hasEquipment(value);
+        if (targetExists) {
+            boolean playerHasTarget = gameState.getPlayer().hasItem(value) ||
+                    gameState.getPlayer().hasEquipment(value);
+
+            if (playerHasTarget) {
+                return "You already have " + value;
+            }
+            else {
+                boolean isItem = gameState.getMap().getCurrentRoom().hasItem(value);
+                if (isItem) {
+                    gameState.getPlayer().addItem(gameState.getMap().getCurrentRoom().getItemByName(value));
+                    gameState.getMap().getCurrentRoom().getItemByName(value).setHidden(true);
+                }
+                else {
+                    gameState.getPlayer().addEquipment(gameState.getMap().getCurrentRoom().getEquipmentByName(value));
+                    gameState.getMap().getCurrentRoom().getEquipmentByName(value).setHidden(true);
+                }
+                return "You pick up: " + value;
+            }
+        }
+        else {
+            return "No " + value + " to get.";
+        }
     }
 
     @Override

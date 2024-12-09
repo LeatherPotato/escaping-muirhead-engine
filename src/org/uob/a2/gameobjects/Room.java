@@ -3,6 +3,7 @@ package org.uob.a2.gameobjects;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Represents a room in the game, which is a type of {@code GameObject}.
@@ -73,7 +74,7 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Equipment> getEquipments() {
-        return equipment;
+        return equipment.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public Exit getExit(String id) {
@@ -81,7 +82,7 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Exit> getExits() {
-        return exits;
+        return exits.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public Feature getFeature(String id) {
@@ -93,7 +94,7 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Feature> getFeatures() {
-        return features;
+        return features.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public Item getItem(String id) {
@@ -105,7 +106,7 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Item> getItems() {
-        return items;
+        return items.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
