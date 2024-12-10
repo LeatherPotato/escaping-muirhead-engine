@@ -120,7 +120,7 @@ public class Parser {
                 break;
 
             case CommandType.HELP:
-                System.out.println(tokens.stream().map(n -> n.getTokenType().name()).collect(Collectors.joining(" ")));
+//                System.out.println(tokens.stream().map(n -> n.getTokenType().name()).collect(Collectors.joining(" ")));
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Help(tokens.get(1).getValue());

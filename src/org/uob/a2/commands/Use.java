@@ -29,44 +29,54 @@ public class Use extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        // incorrect check for target existence
-        boolean targetExists = gameState.getMap().getCurrentRoom().hasItem(value) ||
-                gameState.getMap().getCurrentRoom().getItem(value) != null ||
-                gameState.getMap().getCurrentRoom().hasFeature(value) ||
-                gameState.getMap().getCurrentRoom().getFeature(value) != null;
-        // TODO: we only care about the existence of a target if one is provided, otherwise, just do the stuff on line 32
-        // so only check if a target exists if target != null
-        if (targetExists) {
+        if (value == null || value.isEmpty()) {
             boolean has = gameState.getPlayer().hasEquipment(equipmentName);
             if (has) {
                 boolean used = gameState.getPlayer().getEquipment(equipmentName).getUseInformation().isUsed();
                 if (used) {
                     return "You have already used " + equipmentName;
+                } else {
+                    return gameState.getPlayer().getEquipment(equipmentName).use(null, gameState);
                 }
-                else {
-                    boolean isItem = gameState.getMap().getCurrentRoom().hasItem(value) || gameState.getMap().getCurrentRoom().getItem(value) != null;
-                    GameObject obj;
-                    if (isItem) {
-                        obj = gameState.getMap().getCurrentRoom().getItemByName(value);
-                        if (obj == null) {
-                            obj = gameState.getMap().getCurrentRoom().getItem(value);
-                        }
-                    }
-                    else {
-                        obj = gameState.getMap().getCurrentRoom().getFeatureByName(value);
-                        if (obj == null) {
-                            obj = gameState.getMap().getCurrentRoom().getFeature(value);
-                        }
-                    }
-                    return gameState.getPlayer().getEquipment(equipmentName).use(obj, gameState);
-                }
-            }
-            else {
+            } else {
                 return "You do not have " + equipmentName;
             }
         }
         else {
-            return "Invalid use target";
+            boolean targetExists = gameState.getMap().getCurrentRoom().hasItem(value) ||
+                    gameState.getMap().getCurrentRoom().getItem(value) != null ||
+                    gameState.getMap().getCurrentRoom().hasFeature(value) ||
+                    gameState.getMap().getCurrentRoom().getFeature(value) != null;
+            // TODO: we only care about the existence of a target if one is provided, otherwise, just do the stuff on line 32
+            // so only check if a target exists if target != null
+            if (targetExists) {
+                boolean has = gameState.getPlayer().hasEquipment(equipmentName);
+                if (has) {
+                    boolean used = gameState.getPlayer().getEquipment(equipmentName).getUseInformation().isUsed();
+                    if (used) {
+                        return "You have already used " + equipmentName;
+                    } else {
+                        boolean isItem = gameState.getMap().getCurrentRoom().hasItem(value) || gameState.getMap().getCurrentRoom().getItem(value) != null;
+                        GameObject obj;
+                        if (isItem) {
+                            obj = gameState.getMap().getCurrentRoom().getItemByName(value);
+                            if (obj == null) {
+                                obj = gameState.getMap().getCurrentRoom().getItem(value);
+                            }
+                        } else {
+                            obj = gameState.getMap().getCurrentRoom().getFeatureByName(value);
+                            if (obj == null) {
+                                obj = gameState.getMap().getCurrentRoom().getFeature(value);
+                            }
+                        }
+                        return gameState.getPlayer().getEquipment(equipmentName).use(obj, gameState);
+                    }
+                } else {
+                    return "You do not have " + equipmentName;
+                }
+            } else {
+                return "Invalid use target";
+            }
         }
     }
 

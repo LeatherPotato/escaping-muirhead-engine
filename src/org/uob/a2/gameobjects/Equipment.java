@@ -6,10 +6,6 @@ public class Equipment extends GameObject implements Usable {
     // CONSTRUCTOR
     public Equipment(String id, String name, String description, boolean hidden, UseInformation useInformation) {
         super(id, name, description, hidden);
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.hidden = hidden;
         this.useInformation = useInformation;
     }
 
@@ -18,7 +14,9 @@ public class Equipment extends GameObject implements Usable {
     // uses the equipment object and updates gameState
     public String use(GameObject target, GameState gameState) {
         useInformation.setUsed(true);
-        target.setHidden(true);
+        if (target != null) {
+            target.setHidden(true);
+        }
         GameObject obj = gameState.getMap().getCurrentRoom().getItem(useInformation.getResult());
         if (obj == null) {
             obj = gameState.getMap().getCurrentRoom().getEquipment(useInformation.getResult());
