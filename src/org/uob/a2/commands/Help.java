@@ -48,7 +48,12 @@ public class Help extends Command {
 
     @Override
     public String toString() {
-        return "HELP " + this.value;
+        if (value == null) {
+            return "HELP: help null";
+        }
+        else {
+            return "HELP: help " + this.value;
+        }
     }
 
 }

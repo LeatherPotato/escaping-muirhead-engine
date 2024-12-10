@@ -33,7 +33,7 @@ public enum CommandType {
     /**
      * Represents a command to look around the current location or inspect an object.
      */
-    LOOK("LOOK COmmand: use the 'look' command to look around the room, at an exit, at a feature, or at a specific item, equipment, or feature, by typing 'look <room|exit|feature>|<item name>|<feature name>'"),
+    LOOK("LOOK Command: use the 'look' command to look around the room, at an exit, at a feature, or at a specific item, equipment, or feature, by typing 'look <room|exit|feature>|<item name>|<feature name>'"),
 
     /**
      * Represents a command to check the player's current status.

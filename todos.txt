@@ -1,0 +1,1 @@
+TODO: fix all command ToStrings to return what user's executed command us. might need to change parser to add prepositions and stuff

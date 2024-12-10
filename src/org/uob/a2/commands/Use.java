@@ -12,11 +12,19 @@ import org.uob.a2.gameobjects.*;
  */
 public class Use extends Command {
     private String equipmentName;
+    private String preposition;
 
     public Use(String equipmentName, String target) {
         this.value = target;
         this.equipmentName = equipmentName;
         this.commandType = CommandType.USE;
+    }
+
+    public Use(String equipmentName, String target, String preposition) {
+        this.value = target;
+        this.equipmentName = equipmentName;
+        this.commandType = CommandType.USE;
+        this.preposition = preposition;
     }
 
     @Override
@@ -26,6 +34,8 @@ public class Use extends Command {
                 gameState.getMap().getCurrentRoom().getItem(value) != null ||
                 gameState.getMap().getCurrentRoom().hasFeature(value) ||
                 gameState.getMap().getCurrentRoom().getFeature(value) != null;
+        // TODO: we only care about the existence of a target if one is provided, otherwise, just do the stuff on line 32
+        // so only check if a target exists if target != null
         if (targetExists) {
             boolean has = gameState.getPlayer().hasEquipment(equipmentName);
             if (has) {
@@ -62,7 +72,7 @@ public class Use extends Command {
 
     @Override
     public String toString() {
-        return "USE itemname: " + this.equipmentName + " target: " + this.value;
+        return "use " + this.equipmentName + " " + preposition + " " + this.value;
     }
 
   

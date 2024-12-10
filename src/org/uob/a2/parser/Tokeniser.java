@@ -1,7 +1,11 @@
 package org.uob.a2.parser;
 
+import org.uob.a2.commands.CommandType;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * The {@code Tokeniser} class is responsible for converting a string input into a list of tokens
@@ -15,7 +19,7 @@ public class Tokeniser {
     ArrayList<Token> tokens;
 
     public Tokeniser() {
-
+        tokens = new ArrayList<>();
     }
 
     public ArrayList<Token> getTokens() {
@@ -47,8 +51,44 @@ public class Tokeniser {
     }
 
     public void tokenise(String s) {
-        ArrayList<Token> tokens = new ArrayList<>();
+        tokens.clear();
         String[] split = this.sanitise(s).split("\\s+");
+//        System.out.println(Arrays.toString(split));
+
+        for (int i=0; i<split.length; i++) {
+            String tokenString = split[i];
+            try {
+                if (tokenString.equals("var") || tokenString.equals("error") || tokenString.equals("preposition") || tokenString.equals("eol")) {
+                    tokens.add(new Token(TokenType.ERROR, null));
+                }
+                else {
+                    Token tok = new Token(TokenType.valueOf(tokenString.toUpperCase()), null);
+                    if (i == 0) {
+                        tokens.add(tok);
+                    }
+                }
+            } catch (Exception e) {
+                final String[] prepositions = {"on", "with", "to", "using"};
+
+
+                if (Arrays.stream(prepositions).anyMatch(tokenString::contains)) {
+                    tokens.add( new Token(TokenType.PREPOSITION, tokenString) );
+                }
+
+                else if (false) {
+                    continue;
+                    // not sure what to do with the TokenType.ERROR type so ill just leave this part empty and if
+                    // figure out how that works then you can add it in later
+                }
+
+                else {
+                    tokens.add(new Token(TokenType.VAR, tokenString));
+                }
+            }
+        }
+
+        tokens.add(new Token(TokenType.EOL, null));
+//        System.out.println(tokens.stream().map(n -> n.getTokenType().toString()).collect(Collectors.joining(" ")));
 
         // do stuff on the split array to turn it into token array then set this.tokens to local tokens variable
     }
