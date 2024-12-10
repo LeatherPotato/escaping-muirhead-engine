@@ -33,11 +33,11 @@ public class Get extends Command {
                 boolean isItem = gameState.getMap().getCurrentRoom().hasItem(value);
                 if (isItem) {
                     gameState.getPlayer().addItem(gameState.getMap().getCurrentRoom().getItemByName(value));
-                    gameState.getMap().getCurrentRoom().getItemByName(value).setHidden(true);
+                    gameState.getMap().getCurrentRoom().removeItem(gameState.getMap().getCurrentRoom().getItemByName(value));
                 }
                 else {
                     gameState.getPlayer().addEquipment(gameState.getMap().getCurrentRoom().getEquipmentByName(value));
-                    gameState.getMap().getCurrentRoom().getEquipmentByName(value).setHidden(true);
+                    gameState.getMap().getCurrentRoom().removeEquipment(gameState.getMap().getCurrentRoom().getEquipmentByName(value));
                 }
                 return "You pick up: " + value;
             }

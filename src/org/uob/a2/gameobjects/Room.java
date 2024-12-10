@@ -74,6 +74,10 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Equipment> getEquipments() {
+        return equipment;
+    }
+
+    public ArrayList<Equipment> getNonHiddenEquipments() {
         return equipment.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -82,6 +86,10 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Exit> getExits() {
+        return exits;
+    }
+
+    public ArrayList<Exit> getNonHiddenExits() {
         return exits.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -94,6 +102,10 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Feature> getFeatures() {
+        return features;
+    }
+
+    public ArrayList<Feature> getNonHiddenFeatures() {
         return features.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -106,6 +118,10 @@ public class Room extends GameObject {
     }
 
     public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public ArrayList<Item> getNonHiddenItems() {
         return items.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -133,6 +149,23 @@ public class Room extends GameObject {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void removeItem(Item item) {
+        this.items.remove(item);
+    }
+
+    public void removeEquipment(Equipment equipment) {
+        this.equipment.remove(equipment);
+    }
+
+    public void removeFeature(Feature feature) {
+        this.features.remove(feature);
+    }
+
+    public void removeExit(Exit exit) {
+        this.exits.remove(exit);
+    }
+
 
     /**
      String

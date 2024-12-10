@@ -27,21 +27,21 @@ public class Look extends Command {
         else if (value.equals("room")) {
             final String roomName = gameState.getMap().getCurrentRoom().getName();
             final String roomDescription = gameState.getMap().getCurrentRoom().getDescription();
-            final String roomFeatures = gameState.getMap().getCurrentRoom().getFeatures().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
-            final String roomItems = gameState.getMap().getCurrentRoom().getItems().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
-            final String roomEquipment = gameState.getMap().getCurrentRoom().getEquipments().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String roomFeatures = gameState.getMap().getCurrentRoom().getNonHiddenFeatures().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String roomItems = gameState.getMap().getCurrentRoom().getNonHiddenItems().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String roomEquipment = gameState.getMap().getCurrentRoom().getNonHiddenEquipments().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
 
            return "Room name: " + roomName + "\nRoom description: " + roomDescription + "\nFeatures:\n" + roomFeatures + "\nItems:\n" + roomItems + "\nEquipment:\n" + roomEquipment;
         }
 
         else if(value.equals("exits")) {
-            final String exits = gameState.getMap().getCurrentRoom().getExits().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String exits = gameState.getMap().getCurrentRoom().getNonHiddenExits().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
 
             return "The available exits are:\n" + exits;
         }
 
         else if(value.equals("features")) {
-            final String roomFeatures = gameState.getMap().getCurrentRoom().getFeatures().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
+            final String roomFeatures = gameState.getMap().getCurrentRoom().getNonHiddenFeatures().stream().map(n -> "- " + n.getName() + ": " + n.getDescription()).collect(Collectors.joining("\n"));
 
             return "You also see: " + roomFeatures;
         }
