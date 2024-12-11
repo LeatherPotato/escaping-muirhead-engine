@@ -49,7 +49,7 @@ public class Get extends Command {
 
     @Override
     public String toString() {
-        return "GET " + this.value;
+        return "GET: get " + this.value;
     }
 
 }

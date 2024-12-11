@@ -27,6 +27,7 @@ public class Help extends Command {
             - DROP: Drop an item from your inventory (e.g., ’drop key’).
             - LOOK: Look around the current room or inspect an object.
             - STATUS: Check your current status, including inventory.(e.g. ’status player’ or ’status inventory’).
+            - COMBINE: Combine two items into one for puzzles.
             - HELP: Display this help information or get help on a specific topic
                 (e.g., ’help move’).
             - QUIT: Exit the game.

@@ -119,6 +119,20 @@ public class Parser {
                 }
                 break;
 
+            case CommandType.COMBINE:
+                if (tokens.size() == 4) {
+                    if (tokens.get(1).getTokenType().equals(TokenType.VAR) && tokens.get(2).getTokenType().equals(TokenType.VAR)) {
+                        command = new Combine(tokens.get(1).getValue(), tokens.get(2).getValue());
+                    }
+                    else {
+                        throw new CommandErrorException("Illegal arguments.");
+                    }
+                }
+                else{
+                    throw new CommandErrorException("'combine' requires two arguments.");
+                }
+                break;
+
             case CommandType.HELP:
 //                System.out.println(tokens.stream().map(n -> n.getTokenType().name()).collect(Collectors.joining(" ")));
                 if (tokens.size() == 3) {

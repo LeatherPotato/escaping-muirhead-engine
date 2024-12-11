@@ -40,6 +40,8 @@ public enum CommandType {
      */
     STATUS("STATUS Command: Use the 'status' command to check your current status, inventory, or to get more information about a specific item or equipment in your inventory (e.g., 'status player' and 'status inventory'), by typing 'status <inventory|player|item name|equipment name|map|score>'"),
 
+    COMBINE("COMBINE Command: Use the 'combine' command to combine two items by using 'combine <item1> <item2>'"),
+
     /**
      * Represents a command to display help information.
      */
