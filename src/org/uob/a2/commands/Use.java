@@ -47,8 +47,6 @@ public class Use extends Command {
                     gameState.getMap().getCurrentRoom().getItem(value) != null ||
                     gameState.getMap().getCurrentRoom().hasFeature(value) ||
                     gameState.getMap().getCurrentRoom().getFeature(value) != null;
-            // TODO: we only care about the existence of a target if one is provided, otherwise, just do the stuff on line 32
-            // so only check if a target exists if target != null
             if (targetExists) {
                 boolean has = gameState.getPlayer().hasEquipment(equipmentName);
                 if (has) {
