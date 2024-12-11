@@ -14,6 +14,7 @@ public class Player {
     private ArrayList<Equipment> equipment;
     private ArrayList<Item> inventory;
     private String name;
+    private float score;
 
     // defqault constructor
     public Player() {
@@ -70,6 +71,14 @@ public class Player {
 
     public void removeItem(Item item) {
         this.inventory.remove(item);
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public float getScore() {
+        return score;
     }
 
 

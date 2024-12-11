@@ -38,6 +38,10 @@ public class Status extends Command {
             return "Player Name: " + name + "\nInventory:\n" + items + "\nEquipment:\n" + equipment;
         }
 
+        else if (value.equals("score")) {
+            return "Score: " + gameState.getPlayer().getScore();
+        }
+
         else if(gameState.getMap().getCurrentRoom() == null) {
             if(gameState.getPlayer().hasItem(value)) {
                 return gameState.getPlayer().getItem(value).getDescription();
