@@ -21,7 +21,7 @@ public class GameStateFileParser {
 
     }
 
-    public static GameState parse(String filename) throws IOException {
+    public static GameState parse(String filename) {
         Player player = new Player();
         Map map = new Map();
 
@@ -54,92 +54,97 @@ public class GameStateFileParser {
         String firstRoomId = null;
 
         for (String line : lines) {
-            splitLine = line.split(",");
-            try {
-                objectType = splitLine[0].split(":")[0];
-                objectId = splitLine[0].split(":")[1];
-            } catch (ArrayIndexOutOfBoundsException e) {
+            if (line.isEmpty()) {
+                continue;
+            } else {
+                splitLine = line.split(",");
+                try {
+                    objectType = splitLine[0].split(":")[0];
+                    objectId = splitLine[0].split(":")[1];
+                } catch (ArrayIndexOutOfBoundsException e) {
 //                System.out.println("unexpected input! a line in the file doesnt start with objectType:objectId!");
-                break;
-                // erroenous input
-            }
+                    break;
+                    // erroenous input
+                }
 //          System.out.println("ID_AND_TYPE: " + objectType + " " + objectId);
 //          System.out.println(objectType);
 
-            switch (objectType) {
-                case "player":
-                    player = new Player(objectId);
-                    break;
+                switch (objectType) {
+                    case "player":
+                        player = new Player(objectId);
+                        break;
 
-                case "map":
-                    map = new Map();
-                    firstRoomId = objectId;
-                    break;
+                    case "map":
+                        map = new Map();
+                        firstRoomId = objectId;
+                        break;
 
-                case "room":
-                    currentRoom = new Room(objectId,
-                            splitLine[1],
-                            splitLine[2],
-                            Boolean.parseBoolean(splitLine[3])
-                    );
+                    case "room":
+                        currentRoom = new Room(objectId,
+                                splitLine[1],
+                                splitLine[2],
+                                Boolean.parseBoolean(splitLine[3])
+                        );
 //                    System.out.println(currentRoom);
-                    map.addRoom(currentRoom);
-                    break;
+                        map.addRoom(currentRoom);
+                        break;
 
-                case "feature":
-                case "container":
-                    currentRoom.addFeature(
-                            new Feature(objectId,
-                                    splitLine[1],
-                                    splitLine[2],
-                                    Boolean.parseBoolean(splitLine[3])
-                            )
-                    );
-                    break;
+                    case "feature":
+                    case "container":
+                        currentRoom.addFeature(
+                                new Feature(objectId,
+                                        splitLine[1],
+                                        splitLine[2],
+                                        Boolean.parseBoolean(splitLine[3])
+                                )
+                        );
+                        break;
 
-                case "item":
-                    currentRoom.addItem(
-                            new Item(objectId,
-                                    splitLine[1],
-                                    splitLine[2],
-                                    Boolean.parseBoolean(splitLine[3])
-                            )
-                    );
-                    break;
+                    case "item":
+                        currentRoom.addItem(
+                                new Item(objectId,
+                                        splitLine[1],
+                                        splitLine[2],
+                                        Boolean.parseBoolean(splitLine[3])
+                                )
+                        );
+                        break;
 
-                case "equipment":
-                    currentRoom.addEquipment(
-                            new Equipment(objectId,
-                                    splitLine[1],
-                                    splitLine[2],
-                                    Boolean.parseBoolean(splitLine[3]),
-                                    new UseInformation(
-                                            false,
-                                            splitLine[4],
-                                            splitLine[5],
-                                            splitLine[6],
-                                            splitLine[7]
-                                    )
-                            )
-                    );
-                    break;
+                    case "equipment":
+                        currentRoom.addEquipment(
+                                new Equipment(objectId,
+                                        splitLine[1],
+                                        splitLine[2],
+                                        Boolean.parseBoolean(splitLine[3]),
+                                        new UseInformation(
+                                                false,
+                                                splitLine[4],
+                                                splitLine[5],
+                                                splitLine[6],
+                                                splitLine[7]
+                                        )
+                                )
+                        );
+                        break;
 
-                case "exit":
-                    currentRoom.addExit(
-                            new Exit(objectId,
-                                    splitLine[1],
-                                    splitLine[2],
-                                    splitLine[3],
-                                    Boolean.parseBoolean(splitLine[4])
-                            )
-                    );
-                    break;
+                    case "exit":
+                        currentRoom.addExit(
+                                new Exit(objectId,
+                                        splitLine[1],
+                                        splitLine[2],
+                                        splitLine[3],
+                                        Boolean.parseBoolean(splitLine[4])
+                                )
+                        );
+                        break;
 
-                default:
-                    System.out.println("unknown token");
+                    default:
+                        System.out.println(objectType);
+                        System.out.println("unknown token");
+
+                }
 
             }
-
         }
 
         map.setCurrentRoom(firstRoomId);

@@ -15,14 +15,19 @@ public class Combine extends Command {
     public String execute(GameState gameState) {
         if (item1.equals("red-amongus") && item2.equals("blue-amongus")) {
             if (gameState.getPlayer().hasItem(item1) && gameState.getPlayer().hasItem(item2)) {
-                gameState.getPlayer().removeItem(gameState.getPlayer().getItem("red-amongus"));
-                gameState.getPlayer().removeItem(gameState.getPlayer().getItem("blue-amongus"));
-                gameState.getMap().getCurrentRoom().getItemByName("purple-amongus").setHidden(false);
-                gameState.getPlayer().addItem(gameState.getMap().getCurrentRoom().getItemByName("purple-amongus"));
-                return "Combined red and blue amongi into purple amongus";
+                try {
+                    gameState.getPlayer().removeItem(gameState.getPlayer().getItem("red-amongus"));
+                    gameState.getPlayer().removeItem(gameState.getPlayer().getItem("blue-amongus"));
+                    gameState.getMap().getCurrentRoom().getItemByName("purple-amongus").setHidden(false);
+                    gameState.getPlayer().addItem(gameState.getMap().getCurrentRoom().getItemByName("purple-amongus"));
+                    return "Combined red and blue amongi into purple amongus";
+                }
+                catch (Exception e) {
+                    return "Combination not available in currentRoom";
+                }
             }
             else {
-                return "You dont have the reqired items";
+                return "You dont have the required items";
             }
         }
         else {

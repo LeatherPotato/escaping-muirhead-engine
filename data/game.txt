@@ -1,10 +1,28 @@
 player:pieter
-map:r1
-    room:r1,test room,This is a test room for testing. It's bland.,false
-        equipment:k0,key,An old rusty key,false,open,c1,rb1,You use the rusty key to open the chest. Something falls to the floor...
-        container:c1,chest,A solid oak chest.,false
-        equipment:rb1,ruby,A red ruby,true,reveal,r1,e1,You active the ruby! Hidden objects become visible!
-        item:d1,diamond,A test diamond,false
-        exit:e1,north,A door to the north,r2,true
-     room:r2,second room, This is the second testing room. It's even more bland.,false
-        exit:e2,south,A door to the south,r1,false
+map:f4p1
+room:f4,floor4,this is the 4th floor of muirhead tower,false
+exit:f4e1,prison-1,the poor to the prison,f4p1,false
+exit:f4e2,skpg-office,the office of skeleton prison guard,f4o2,false
+exit:f4e3,lt3,a door to lecture theatre 3,f4l3,false
+exit:f4e4,lt4,a door to lecture theatre 4,f4l4,false
+exit:f4e5,lt5,a door to lecture theatre 5,f4l5,false
+exit:f4e0,stairs,a door to the stairs,s43,true
+feature:f4f1,stairs-door,a door to the stairs,false
+equipment:amgp,purple-amongus,ourple mongus,true,open,f4f1,f4e0,you use the ourple mungus to unlock the door to the stairs that will take you down to the 3rd floor
+
+room:f4p1,prison-1,a prison cell with the skeleton of a guard laying in the ground,false
+feature:skpg,skeleton-prison-guard,the skeleton of a prison guard who looks like he really would have enjoyed wordles lays in the ground in front of you with a keycard poking out of his shirt,false
+exit:pce0,prison-exit,the door to exit the prison cell,f4,true
+feature:pcf1,prison-exit, door to exit the prison cell to enter the 4th floor hallway,false
+equipment:pgkc,keycard,the prison guards keycard,false,open,pcf1,pce0,you use the keycard to unlock the door to the 4th floor hallway. you can now go through the door by using 'move prison-exit'.
+item:amgr,red-amongus,red amongus,false
+item:amgb,blue-amongus,blue amongus,false
+
+room:f4o2,skpg-office,the office of the skeleton prison guard,false
+room:f4l3,lt3,lecture theatre 3,false
+room:f4l4,lt4,lecture theatre 4,false
+room:f4l5,lt5,lecture theatre 5,false
+
+room:st43,stairs-4-3,the stairs between the 4th abd 3rd floors,true
+exit:e4,floor-1,a door to the 4th floor,f4,false
+exit:e3,floor-3, a door to the third floor,f3,false

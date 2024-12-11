@@ -18,12 +18,12 @@ public class Move extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        if (gameState.getMap().getCurrentRoom().getExit(value) != null) {
-            if (gameState.getMap().getCurrentRoom().getExit(value).getHidden()) {
+        if (gameState.getMap().getCurrentRoom().getExitByName(value) != null) {
+            if (gameState.getMap().getCurrentRoom().getExitByName(value).getHidden()) {
                 return "No exit found in that direction.";
             }
             else {
-                gameState.getMap().setCurrentRoom(gameState.getMap().getCurrentRoom().getExit(value).getNextRoom());
+                gameState.getMap().setCurrentRoom(gameState.getMap().getCurrentRoom().getExitByName(value).getNextRoom());
                 return "Moving towards " + value + "\n";
             }
         }

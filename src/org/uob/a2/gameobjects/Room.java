@@ -93,6 +93,10 @@ public class Room extends GameObject {
         return exits.stream().filter(x -> !x.hidden).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public Exit getExitByName(String name) {
+        return exits.stream().filter(x -> x.getName().equals(name)).findFirst().orElse(null);
+    }
+
     public Feature getFeature(String id) {
         return features.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }

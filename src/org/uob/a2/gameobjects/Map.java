@@ -48,31 +48,40 @@ public class Map {
         return rooms.stream().filter(x -> x.getId().equals(roomId)).findFirst().orElse(null);
     }
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
    public String display(int exploredFloors, int totalFloors) {
         StringBuilder sb = new StringBuilder();
         ArrayList<Room> floors = rooms.stream().filter(n -> n.getId().length() == 2).collect(Collectors.toCollection(ArrayList::new));
 
         UI ui = new UI();
 
-       final String horizontalBorder = "+" + new String(new char[16]).replace("\0", "16") + "+";
+       final String horizontalBorder = "+" + new String(new char[16]).replace("\0", "-") + "+\n";
        sb.append(horizontalBorder);
 
         for (int i = 0; i < exploredFloors; i++) {
-            ArrayList<Room> roomsOnFloor = floors.get(i).getExits().stream().map(n -> getRoom(n.getNextRoom())).collect(Collectors.toCollection(ArrayList::new));
+            ArrayList<Room> roomsOnFloor = floors.get(i).getNonHiddenExits().stream().map(n -> getRoom(n.getNextRoom())).collect(Collectors.toCollection(ArrayList::new));
+//            System.out.println(roomsOnFloor);
             String[] roomsOnFloorText = new String[roomsOnFloor.size()];
             String floorText;
             if (i%2 == 0) {
                 for (int n = 0; n<roomsOnFloor.size(); n++) {
+//                    System.out.println(n);
                     Room room = roomsOnFloor.get(n);
+//                    System.out.println(room);
                     if (room.equals(currentRoom)) {
-                        roomsOnFloorText[n] = ui.addMapPlayerPosColour(room.getId().replaceAll("F\\d", ""));
+//                        System.out.println("reached room and currentroom comparison");
+                        roomsOnFloorText[n] = ui.addMapPlayerPosColour(room.getId().substring(2,4));
                     }
                     else {
-                        roomsOnFloorText[n] = room.getId();
+                        roomsOnFloorText[n] = room.getId().substring(2,4);
                     }
                 }
                 if (floors.get(i).equals(currentRoom)) {
-                    floorText = ui.addMapPlayerPosColour(new String(new char[7]).replace("\0", FLOOR_ON));
+//                    System.out.println("reached floors[i] and currentroom comparison");
+                    floorText = ui.addMapPlayerPosColour(new String(new char[5]).replace("\0", FLOOR_ON));
                 }
                 else if (i == Character.getNumericValue(currentRoom.getId().charAt(1))) {
                     floorText = new String(new char[5]).replace("\0", FLOOR_ON_IN_ROOM);
@@ -80,9 +89,9 @@ public class Map {
                 else {
                     floorText = new String(new char[5]).replace("\0", FLOOR_NOT_ON);
                 }
-                sb.append("|" + " ").append(roomsOnFloorText[1]).append(" ").append(roomsOnFloorText[0]).append("         ").append("|\n");
-                sb.append("|").append(roomsOnFloorText[2]).append(floorText).append("|\n");
-                sb.append("|" + " ").append(roomsOnFloorText[3]).append(" ").append(roomsOnFloorText[4]);
+                sb.append("|" + "  " + roomsOnFloorText[1] + " " + roomsOnFloorText[0] + "         " + "|\n");
+                sb.append("|" + roomsOnFloorText[2] + floorText + "         " + "|\n");
+                sb.append("|" + "  " + roomsOnFloorText[3] + " " + roomsOnFloorText[4]);
 
                 if (i<exploredFloors-1) {
                     sb.append(STAIRS).append("        |\n");

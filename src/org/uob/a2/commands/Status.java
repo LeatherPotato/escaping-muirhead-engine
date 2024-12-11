@@ -25,8 +25,8 @@ public class Status extends Command {
             return "";
         }
         else if (value.equals("inventory")) {
-            final String items = gameState.getPlayer().getInventory().stream().map(n -> n.getName()).collect(Collectors.joining(", "));
-            final String equipment = gameState.getPlayer().getEquipment().stream().map(n -> n.getName()).collect(Collectors.joining(", "));
+            final String items = gameState.getPlayer().getInventory().stream().filter(n -> !n.getHidden()).map(n -> n.getName()).collect(Collectors.joining(", "));
+            final String equipment = gameState.getPlayer().getEquipment().stream().filter(n -> !n.getHidden()).map(n -> n.getName()).collect(Collectors.joining(", "));
             return items + ", " + equipment;
         }
 
@@ -40,6 +40,16 @@ public class Status extends Command {
 
         else if (value.equals("score")) {
             return "Score: " + gameState.getPlayer().getScore();
+        }
+
+        else if (value.equals("map")) {
+//            System.out.println("display reached");
+            if (gameState.getExploredFloors() == 0) {
+                return "You are in prison";
+            }
+            else {
+                return gameState.getMap().display(gameState.getExploredFloors(), gameState.getTotalFloors());
+            }
         }
 
         else if(gameState.getMap().getCurrentRoom() == null) {

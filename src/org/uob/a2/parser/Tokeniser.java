@@ -71,7 +71,7 @@ public class Tokeniser {
                 final String[] prepositions = {"on", "with", "to", "using"};
 
 
-                if (Arrays.stream(prepositions).anyMatch(tokenString::contains)) {
+                if (Arrays.stream(prepositions).anyMatch(tokenString::equals)) {
                     tokens.add( new Token(TokenType.PREPOSITION, tokenString) );
                 }
 

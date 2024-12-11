@@ -22,7 +22,13 @@ public class Equipment extends GameObject implements Usable {
             obj = gameState.getMap().getCurrentRoom().getEquipment(useInformation.getResult());
             if (obj == null) {
                 obj = gameState.getMap().getCurrentRoom().getFeature(useInformation.getResult());
-                if (obj != null) {
+                if (obj == null) {
+                    obj = gameState.getMap().getCurrentRoom().getExit(useInformation.getResult());
+                    if (obj != null) {
+                        obj.setHidden(false);
+                    }
+                }
+                else {
                     obj.setHidden(false);
                 }
             }
@@ -32,6 +38,9 @@ public class Equipment extends GameObject implements Usable {
         }
         else {
             obj.setHidden(false);
+        }
+        if (useInformation.getAction().equals("open")) {
+            gameState.setExploredFloors(gameState.getExploredFloors() + 1);
         }
         return useInformation.getMessage();
     }

@@ -11,6 +11,8 @@ package org.uob.a2.gameobjects;
 public class GameState {
     private Map map;
     private Player player;
+    private int exploredFloors;
+    private final int totalFloors = 4;
 
     // default constructor
     public GameState() {
@@ -21,6 +23,19 @@ public class GameState {
     public GameState(Map map, Player player) {
         this.map = map;
         this.player = player;
+        exploredFloors = 0;
+    }
+
+    public int getExploredFloors() {
+        return exploredFloors;
+    }
+
+    public void setExploredFloors(int exploredFloors) {
+        this.exploredFloors = exploredFloors;
+    }
+
+    public int getTotalFloors() {
+        return totalFloors;
     }
 
     public Map getMap() {
