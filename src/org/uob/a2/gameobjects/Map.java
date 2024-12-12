@@ -55,7 +55,7 @@ public class Map {
    public String display(int exploredFloors, int totalFloors) {
         StringBuilder sb = new StringBuilder();
         ArrayList<Room> floors = rooms.stream().filter(n -> n.getId().length() == 2).collect(Collectors.toCollection(ArrayList::new));
-        System.out.println(floors.stream().map(n -> n.getName()).collect(Collectors.joining(", ")));
+//        System.out.println(floors.stream().map(n -> n.getName()).collect(Collectors.joining(", ")));
 
         UI ui = new UI();
 
@@ -65,7 +65,7 @@ public class Map {
 
         for (int i = 0; i < exploredFloors; i++) {
             ArrayList<Room> roomsOnFloor = floors.get(i).getNonHiddenExits().stream().map(n -> getRoom(n.getNextRoom())).collect(Collectors.toCollection(ArrayList::new));
-            System.out.println(roomsOnFloor);
+//            System.out.println(roomsOnFloor);
             String[] roomsOnFloorText = new String[roomsOnFloor.size()];
             String floorText;
             if (i%2 == 0) {
@@ -110,7 +110,7 @@ public class Map {
             else {
                 for (int n = 0; n<roomsOnFloor.size(); n++) {
                     Room room = roomsOnFloor.get(n);
-                    System.out.println(room.getName());
+//                    System.out.println(room.getName());
                     if (room.equals(currentRoom)) {
 //                        System.out.println("reached room and currentroom comparison");
                         roomsOnFloorText[n] = ui.addMapPlayerPosColour(room.getId().substring(2,4));

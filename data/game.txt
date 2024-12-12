@@ -21,6 +21,7 @@ item:amgb,blue-amongus,blue amongus,false
 room:f4o2,skpg-office,the office of the skeleton prison guard,false
 feature:o2f1,blood-writing,there is writing in blood on the wall which gives an ominous warning about the purple amongus,false
 item:pen1,pen,a pen,false
+item:pen1,pen,a pen,false
 exit:o2e0,floor4,the door to return to the 4th floor,f4,false
 
 room:f4l3,lt3,lecture theatre 3,false
