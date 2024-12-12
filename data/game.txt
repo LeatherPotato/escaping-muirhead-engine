@@ -20,6 +20,7 @@ item:amgb,blue-amongus,blue amongus,false
 
 room:f4o2,skpg-office,the office of the skeleton prison guard,false
 feature:o2f1,blood-writing,there is writing in blood on the wall which gives an ominous warning about the purple amongus,false
+item:pen1,pen,a pen,false
 exit:o2e0,floor4,the door to return to the 4th floor,f4,false
 
 room:f4l3,lt3,lecture theatre 3,false
@@ -43,7 +44,7 @@ exit:f3e2,lt2,lecture theatre 2,f3l2,false
 exit:f3e3,lt3,lecture theatre 3,f3l3,false
 exit:f3e4,lt4,lecture theatre 4,f3l4,false
 exit:f3e5,lt5,lecture theatre 5,f3l5,false
-exit:f3e0,stairs-door,a door to the stairs,st32,true
+exit:f3e0,stairs,a door to the stairs,st32,true
 feature:f3f1,stairs-door-square-hole-1,the lock on the door to the stairs,false
 feature:f3f2,stairs-door-square-hole-2,a lock on door to the stairs,false
 feature:f3f3,stairs-door-square-hole-3,a lock on door to the stairs,false
@@ -69,7 +70,7 @@ room:f3l5,lt5,lecture theatre 5,false
 exit:e3,floor3,a door to the 3rd floor,f3,false
 
 
-room:st32,stairs-3-2,the stairs between the 3rd and 2nd floors,true
+room:st32,stairs,the stairs between the 3rd and 2nd floors,true
 exit:e3,floor3,a door to the 3rd floor,f3,false
 exit:e2,floor2,a door to the 2nd floor,f2,false
 
@@ -80,12 +81,12 @@ exit:f2e2,lt2,a door to lecture theatre 2,f2l2,false
 exit:f2e3,lt3,a door to lecture theatre 4,f2l3,false
 exit:f2e4,lt4,a door to lecture theatre 5,f2l4,false
 exit:f2e5,lt5,a door to lecture theatre 6,f2l5,false
-exit:f2e0,stairs-door,a door to the stairs,st21,true
+exit:f2e0,stairs,a door to the stairs,st21,true
 feature:f2f1,keypad,a keypad with a sticky-note saying "pxlukhdg" on it,false
 
-room:f4o1,ceasar-office,the office of the skeleton prison guard,false
-feature:o1f1,sticky-note,you see "+3" written on the sticky note in ceasar's office,false
-exit:o1e0,floor4,the door to return to the 2nd floor,f2,false
+room:f2o1,ceasar-office,the office of the skeleton prison guard,false
+item:o1i1,sticky-note,you see "+3" written on the sticky note in ceasar's office,false
+exit:o1e0,floor2,the door to return to the 2nd floor,f2,false
 
 room:f2l2,lt2,lecture theatre 2,false
 feature:f2f2,lt4-projector,on the projected screen is a lecture about encryption. specificlly more rudimentary forms of encryption,false
@@ -104,17 +105,17 @@ feature:f2f2,lt4-projector,on the projected screen is a lecture about the julias
 exit:e1,floor2,a door to the 2nd floor,f2,false
 
 
-room:st32,stairs-3-2,the stairs between the 3rd and 2nd floors,true
+room:st21,stairs,the stairs between the 2nd and 1st floors,true
 exit:e2,floor2,a door to the 2nd floor,f2,false
 exit:e1,floor1,a door to the 1st floor,f1,false
 
 room:f1,floor1,this is the 4th floor of muirhead tower,false
-exit:f1e1,lt1,a door to lecture theatre 1,f4l1,false
-exit:f1e2,lt1,a door to lecture theatre 2,f4l2,false
-exit:f1e3,lt3,a door to lecture theatre 3,f4l3,false
-exit:f1e4,lt4,a door to lecture theatre 4,f4l4,false
-exit:f1e5,lt5,a door to lecture theatre 5,f4l5,false
-exit:f1e0,stairs,a door to the stairs,st43,true
+exit:f1e1,lt1,a door to lecture theatre 1,f1l1,false
+exit:f1e2,lt1,a door to lecture theatre 2,f1l2,false
+exit:f1e3,lt3,a door to lecture theatre 3,f1l3,false
+exit:f1e4,lt4,a door to lecture theatre 4,f1l4,false
+exit:f1e5,lt5,a door to lecture theatre 5,f1l5,false
+feature:f1f1,keypad,keypad,false
 
 room:f1l1,lt1,lecture theatre 1,false
 exit:l1e0,floor1,the door to return to the 1st floor,f1,false
