@@ -22,6 +22,8 @@ public class Game {
         String filename = "./data/game.txt";
         GameState gameState = GameStateFileParser.parse(filename);
         gameState.setExploredFloors(0);
+        gameState.getPlayer().addEquipment(new Equipment("kpcd","code-muirhead","the code to the keypad", true, new UseInformation(false, "open", "f2f1", "f2e0","you have enterred the correct code!")));
+
 
 //        System.out.println(gameState.getMap().getRooms());
 
@@ -40,7 +42,7 @@ public class Game {
 
             try {
                 lastCommand = parser.parse(tokeniser.getTokens());
-                System.out.println(lastCommand.execute(gameState));
+                System.out.println(UI.addColour(lastCommand.execute(gameState)));
 
                 if (lastCommand.commandType == CommandType.QUIT) {
                     quit = true;

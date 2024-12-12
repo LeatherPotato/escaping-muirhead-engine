@@ -13,6 +13,7 @@ public class GameState {
     private Player player;
     private int exploredFloors;
     private final int totalFloors = 4;
+    private int pegsUsed;
 
     // default constructor
     public GameState() {
@@ -24,6 +25,7 @@ public class GameState {
         this.map = map;
         this.player = player;
         exploredFloors = 0;
+        pegsUsed = 0;
     }
 
     public int getExploredFloors() {
@@ -36,6 +38,14 @@ public class GameState {
 
     public int getTotalFloors() {
         return totalFloors;
+    }
+
+    public void setPegsUsed(int pegsUsed) {
+        this.pegsUsed = pegsUsed;
+    }
+
+    public int getPegsUsed() {
+        return this.pegsUsed;
     }
 
     public Map getMap() {

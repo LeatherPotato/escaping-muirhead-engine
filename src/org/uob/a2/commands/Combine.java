@@ -1,6 +1,9 @@
 package org.uob.a2.commands;
 
+import org.uob.a2.gameobjects.Equipment;
 import org.uob.a2.gameobjects.GameState;
+import org.uob.a2.gameobjects.Item;
+import org.uob.a2.gameobjects.UseInformation;
 
 public class Combine extends Command {
     private String item1;
@@ -18,12 +21,12 @@ public class Combine extends Command {
                 try {
                     gameState.getPlayer().removeItem(gameState.getPlayer().getItem("red-amongus"));
                     gameState.getPlayer().removeItem(gameState.getPlayer().getItem("blue-amongus"));
-                    gameState.getMap().getCurrentRoom().getItemByName("purple-amongus").setHidden(false);
-                    gameState.getPlayer().addItem(gameState.getMap().getCurrentRoom().getItemByName("purple-amongus"));
+                    gameState.getPlayer().addEquipment(new Equipment("amgp", "purple-amongus", "ourple mongus!!", false,
+                            new UseInformation(false,"open", "f4f1", "f4e0", "The ourple mongus opends the exit to the door to the stairs between the 3rd and 4th floors")));
                     return "Combined red and blue amongi into purple amongus";
                 }
                 catch (Exception e) {
-                    return "Combination not available in currentRoom";
+                    return "Combination not available in currentRoo";
                 }
             }
             else {

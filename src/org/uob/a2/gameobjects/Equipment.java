@@ -17,6 +17,21 @@ public class Equipment extends GameObject implements Usable {
         if (target != null) {
             target.setHidden(true);
         }
+
+        boolean newHidden = false;
+        if (useInformation.getAction().equals("open")) {
+            gameState.setExploredFloors(gameState.getExploredFloors() + 1);
+        }
+        else if (useInformation.getAction().equals("op")) {
+            gameState.setPegsUsed(gameState.getPegsUsed() + 1);
+            if (gameState.getPegsUsed() == 3) {
+                gameState.setExploredFloors(gameState.getExploredFloors() + 1);
+            }
+            else {
+                newHidden = true;
+            }
+        }
+
         GameObject obj = gameState.getMap().getCurrentRoom().getItem(useInformation.getResult());
         if (obj == null) {
             obj = gameState.getMap().getCurrentRoom().getEquipment(useInformation.getResult());
@@ -25,24 +40,23 @@ public class Equipment extends GameObject implements Usable {
                 if (obj == null) {
                     obj = gameState.getMap().getCurrentRoom().getExit(useInformation.getResult());
                     if (obj != null) {
-                        obj.setHidden(false);
+                        obj.setHidden(newHidden);
                     }
                 }
                 else {
-                    obj.setHidden(false);
+                    obj.setHidden(newHidden);
                 }
             }
             else {
-                obj.setHidden(false);
+                obj.setHidden(newHidden);
             }
         }
         else {
-            obj.setHidden(false);
+            obj.setHidden(newHidden);
         }
-        if (useInformation.getAction().equals("open")) {
-            gameState.setExploredFloors(gameState.getExploredFloors() + 1);
-        }
-        return useInformation.getMessage();
+        String returnMessage = useInformation.getMessage();
+        gameState.getPlayer().removeEquipment(this);
+        return returnMessage;
     }
 
     @Override
