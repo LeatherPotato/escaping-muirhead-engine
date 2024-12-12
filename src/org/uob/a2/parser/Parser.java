@@ -8,7 +8,7 @@ import org.uob.a2.commands.*;
 /**
  * The {@code Parser} class processes a list of tokens and converts them into {@code Command} objects
  * that can be executed by the game.
- * 
+ *
  * <p>
  * The parser identifies the type of command from the tokens and creates the appropriate command object.
  * If the command is invalid or incomplete, a {@code CommandErrorException} is thrown.
@@ -31,7 +31,7 @@ public class Parser {
             throw new CommandErrorException("Not a valid command type");
         }
         switch (commandType) {
-            case CommandType.MOVE:
+            case MOVE:
                 if (tokens.size() == 3) {
                     command = new Move(tokens.get(1).getValue());
                 }
@@ -40,7 +40,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.USE:
+            case USE:
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Use(tokens.get(1).getValue(), null);
@@ -61,7 +61,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.GET:
+            case GET:
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Get(tokens.get(1).getValue());
@@ -76,7 +76,7 @@ public class Parser {
                 break;
 
 
-            case CommandType.DROP:
+            case DROP:
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Drop(tokens.get(1).getValue());
@@ -91,7 +91,7 @@ public class Parser {
                 break;
 
 
-            case CommandType.LOOK:
+            case LOOK:
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Look(tokens.get(1).getValue());
@@ -105,7 +105,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.STATUS:
+            case STATUS:
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
                         command = new Status(tokens.get(1).getValue());
@@ -119,7 +119,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.COMBINE:
+            case COMBINE:
                 if (tokens.size() == 4) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR) && tokens.get(2).getTokenType().equals(TokenType.VAR)) {
                         command = new Combine(tokens.get(1).getValue(), tokens.get(2).getValue());
@@ -133,7 +133,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.HELP:
+            case HELP:
 //                System.out.println(tokens.stream().map(n -> n.getTokenType().name()).collect(Collectors.joining(" ")));
                 if (tokens.size() == 3) {
                     if (tokens.get(1).getTokenType().equals(TokenType.VAR)) {
@@ -153,7 +153,7 @@ public class Parser {
                 }
                 break;
 
-            case CommandType.QUIT:
+            case QUIT:
                 if (tokens.size() == 2) {
                     command = new Quit();
                 }
@@ -169,5 +169,5 @@ public class Parser {
 
         return command;
     }
- 
+
 }
