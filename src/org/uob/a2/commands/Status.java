@@ -39,7 +39,8 @@ public class Status extends Command {
         }
 
         else if (value.equals("score")) {
-            return "Score: " + gameState.getPlayer().getScore();
+            return "Score: " + Float.toString(gameState.getPlayer().getScore());
+
         }
 
         else if (value.equals("map")) {

@@ -16,7 +16,7 @@ public class Combine extends Command {
 
     @Override
     public String execute(GameState gameState) {
-        if (item1.equals("red-amongus") && item2.equals("blue-amongus")) {
+        if ((item1.equals("red-amongus") && item2.equals("blue-amongus")) || (item2.equals("red-amongus") && item1.equals("blue-amongus"))) {
             if (gameState.getPlayer().hasItem(item1) && gameState.getPlayer().hasItem(item2)) {
                 try {
                     gameState.getPlayer().removeItem(gameState.getPlayer().getItem("red-amongus"));

@@ -91,7 +91,12 @@ public class Map {
                 else {
                     floorText = new String(new char[5]).replace("\0", FLOOR_NOT_ON);
                 }
-                sb.append("|" + "  " + roomsOnFloorText[1] + " " + roomsOnFloorText[0] + "         " + "|\n");
+                if (i>0){
+                    sb.append("|" + "  " + roomsOnFloorText[1] + " " + roomsOnFloorText[0] + STAIRS + "        " + "|\n");
+                }
+                else {
+                    sb.append("|" + "  " + roomsOnFloorText[1] + " " + roomsOnFloorText[0] + "         " + "|\n");
+                }
                 sb.append("|" + roomsOnFloorText[2] + floorText + "         " + "|\n");
                 sb.append("|" + "  " + roomsOnFloorText[3] + " " + roomsOnFloorText[4]);
 

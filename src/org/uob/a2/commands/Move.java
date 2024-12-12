@@ -24,6 +24,7 @@ public class Move extends Command {
             }
             else {
                 gameState.getMap().setCurrentRoom(gameState.getMap().getCurrentRoom().getExitByName(value).getNextRoom());
+                gameState.getPlayer().setScore(gameState.getPlayer().getScore() - 2);
                 return "Moving towards " + value + "\n";
             }
         }
